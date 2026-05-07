@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  
+  --color-theme-bg: #1a1c12;
+  --color-theme-text: #e0d8c0;
+  --color-theme-accent: #ffd700;
+  --color-theme-border: #5c4d36;
+  --color-theme-panel: #2a2319;
+  --color-theme-button: #5c4d36;
+}
+
+@layer base {
+  body {
+    @apply antialiased overflow-hidden selection:bg-theme-accent/30 bg-theme-bg text-theme-text font-sans;
+  }
+}
+
+/* Texture Overlays */
+.texture-overlay {
+  @apply absolute inset-0 pointer-events-none mix-blend-overlay opacity-30;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+}
+
+.ambient-glow-top {
+  @apply absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#4c5c2e] rounded-full blur-[120px] opacity-20 pointer-events-none;
+}
+
+.ambient-glow-bottom {
+  @apply absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#5c402e] rounded-full blur-[150px] opacity-20 pointer-events-none;
+}
+
+/* Custom UI Elements */
+.hud-panel {
+  @apply bg-black/40 border-2 border-theme-border px-4 py-2 rounded-sm shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)];
+}
+
+.sidebar-panel {
+  @apply bg-theme-panel/90 border-4 border-[#4d3c2a] rounded-sm p-4 flex flex-col shadow-2xl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-theme-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-theme-accent/50;
+}
